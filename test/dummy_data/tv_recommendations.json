@@ -1,0 +1,29 @@
+{
+    "page": 1,
+    "results": [
+    {
+    "adult": false,
+    "backdrop_path": "/hIZFG7MK4leU4axRFKJWqrjhmxZ.jpg",
+    "id": 95403,
+    "name": "The Peripheral",
+    "original_language": "en",
+    "original_name": "The Peripheral",
+    "overview": "Stuck in a small Appalachian town, a young woman's only escape from the daily grind is playing advanced video games. She is such a good player that a company sends her a new video game system to test... but it has a surprise in store. It unlocks all of her dreams of finding a purpose, romance, and glamour in what seems like a game... but it also puts her and her family in real danger.",
+    "poster_path": "/ccBe5BVeibdBEQU7l6P6BubajWV.jpg",
+    "media_type": "tv",
+    "genre_ids": [
+    10765,
+    18
+    ],
+    "popularity": 469.503,
+    "first_air_date": "2022-10-20",
+    "vote_average": 8.074,
+    "vote_count": 414,
+    "origin_country": [
+    "US"
+    ]
+    }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+}

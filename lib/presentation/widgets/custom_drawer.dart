@@ -1,6 +1,8 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
+import 'package:ditonton/presentation/pages/home_tv_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
+import 'package:ditonton/presentation/pages/watchlist_tvs_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -12,10 +14,23 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
+  String currentHome = 'movies';
 
-  void toggle() => _animationController.isDismissed
-      ? _animationController.forward()
-      : _animationController.reverse();
+  void toggle(String clickedHome) {
+    _animationController.isDismissed
+        ? _animationController.forward()
+        : _animationController.reverse();
+
+    if (clickedHome == 'movies' && currentHome == 'tv series') {
+      setState(() {
+        currentHome = 'movies';
+      });
+    } else if (clickedHome == 'tv series' && currentHome == 'movies') {
+      setState(() {
+        currentHome = 'tv series';
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -42,14 +57,28 @@ class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderSt
             leading: Icon(Icons.movie),
             title: Text('Movies'),
             onTap: () {
-              toggle();
+              toggle('movies');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.live_tv_rounded),
+            title: Text('TV Series'),
+            onTap: () {
+              toggle('tv series');
             },
           ),
           ListTile(
             leading: Icon(Icons.save_alt),
-            title: Text('Watchlist'),
+            title: Text('Movies Watchlist'),
             onTap: () {
               Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.save_alt),
+            title: Text('TV Series Watchlist'),
+            onTap: () {
+              Navigator.pushNamed(context, WatchlistTvsPage.ROUTE_NAME);
             },
           ),
           ListTile(
@@ -80,9 +109,13 @@ class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderSt
                 ..translate(slide)
                 ..scale(scale),
               alignment: Alignment.centerLeft,
-              child: HomeMoviePage(drawerCallback: () {
-                toggle();
-              }),
+              child: currentHome == 'movies'
+                  ? HomeMoviePage(drawerCallback: () {
+                      toggle('movies');
+                    })
+                  : HomeTvPage(drawerCallback: () {
+                      toggle('tv series');
+                    }),
             ),
           ],
         );
