@@ -54,6 +54,23 @@ class DatabaseHelper {
         category TEXT
       );
     ''');
+    await db.execute('''
+      CREATE TABLE  $_tblTvWatchlist (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        overview TEXT,
+        posterPath TEXT
+      );
+    ''');
+    await db.execute('''
+      CREATE TABLE  $_tblTvCache (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        overview TEXT,
+        posterPath TEXT,
+        category TEXT
+      );
+    ''');
   }
 
   void _onCreateTableTv(Database db, int oldVersion, int newVersion) async {

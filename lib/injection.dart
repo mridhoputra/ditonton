@@ -32,6 +32,8 @@ import 'package:ditonton/domain/usecases/search_tvs.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
+import 'package:ditonton/presentation/provider/now_playing_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/now_playing_tvs_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_tvs_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
@@ -87,6 +89,16 @@ void init() {
   locator.registerFactory(
     () => TvSearchNotifier(
       searchTvs: locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => NowPlayingMoviesNotifier(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => NowPlayingTvsNotifier(
+      locator(),
     ),
   );
   locator.registerFactory(
